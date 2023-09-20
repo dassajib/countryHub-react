@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../Components/Home/Home";
 import CountryDetails from "../Components/CountryDetails/CountryDetails";
 import AllCountry from "../Components/AllCountry/AllCountry";
-import Header from "../Components/Header/Header";
+import NavBar from "../Components/NavBar/NavBar";
 
 const Index = () => {
   return (
-    <BrowserRouter>
-      <Header />
+    <BrowserRouter sx={{margin: 0, padding: 0}}>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

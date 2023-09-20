@@ -1,4 +1,5 @@
 import Index from "./Index/Index"
+import './app.css'
 
 function App() {
 

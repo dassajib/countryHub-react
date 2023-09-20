@@ -7,6 +7,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
@@ -74,41 +75,55 @@ const AllCountry = () => {
 
   return (
     <div>
-      <div style={{ height: "10rem" }}>
-        <TextField
-          id="outlined-basic"
-          label="Search By Name"
-          variant="outlined"
-          value={searchCountry}
-          onChange={handleSearchChange}
-        />
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="demo-simple-select-helper-label">Region</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            label="Region"
-            value={region}
-            onChange={handleRegionChange}
-          >
-            {/* according to logic "" means all data */}
-            <MenuItem value={""}>All</MenuItem>
-            <MenuItem value={"Asia"}>Asia</MenuItem>
-            <MenuItem value={"Europe"}>Europe</MenuItem>
-            <MenuItem value={"Africa"}>Africa</MenuItem>
-            <MenuItem value={"Americas"}>Americas</MenuItem>
-            <MenuItem value={"Oceania"}>Oceania</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <Grid
+        container
+        spacing={2}
+        columns={16}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Grid item xs={8} style={{padding: "20px"}}>
+          <TextField
+            style={{ width: "100%" }}
+            id="outlined-basic"
+            label="Search By Name"
+            variant="outlined"
+            value={searchCountry}
+            onChange={handleSearchChange}
+          />
+        </Grid>
+        <Grid item xs={8} style={{padding: "20px"}}>
+          <FormControl sx={{ m: 1}} style={{ width: "100%" }}>
+            <InputLabel id="demo-simple-select-helper-label">Region</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              label="Region"
+              value={region}
+              onChange={handleRegionChange}
+            >
+              {/* according to logic "" means all data */}
+              <MenuItem value={""}>All</MenuItem>
+              <MenuItem value={"Asia"}>Asia</MenuItem>
+              <MenuItem value={"Europe"}>Europe</MenuItem>
+              <MenuItem value={"Africa"}>Africa</MenuItem>
+              <MenuItem value={"Americas"}>Americas</MenuItem>
+              <MenuItem value={"Oceania"}>Oceania</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", padding: "10px 10px" }}>
         {filteredCountryList.map((country) => (
           <Link
             key={country.cca3}
             to={`/countries/${country.cca3}`}
             style={{ textDecoration: "none" }}
           >
-            <Card key={country.name.common} sx={{ maxWidth: 345, width: 190 }}>
+            <Card key={country.name.common} sx={{ maxWidth: 450, width: 190 }}>
               <CardMedia
                 component="img"
                 alt={country.name.common}
